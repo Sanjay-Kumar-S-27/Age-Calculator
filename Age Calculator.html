@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Age Calculator</title>
+        <script>
+            function agecalc(){
+                var d=new Date(document.getElementById("datetime").value);
+                var d1=d.getDate();
+                var day=d.getDay();
+                var dayarr=["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
+                var m1=d.getMonth()+1;
+                var monarr=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+                var y1=d.getFullYear();
+                var td=new Date();
+                var d2=td.getDate();
+                var m2=td.getMonth()+1;
+                var y2=td.getFullYear();
+                document.getElementById("ID1").innerHTML=dayarr[day]+" "+d1+" "+monarr[m1-1]+" "+y1;
+                var f=1;
+                if(y1>y2){
+                f=0;
+                }
+                else if(y1==y2){
+                if(m1>m2){
+                    f=0;
+                }
+                else if(m2==m1){
+                    if(d1>d2){
+                    f=0;
+                    }
+                }
+                }
+                if(f==1){
+                if(d1>d2){
+                    var day=30-d1+d2;
+                    m1=m1+1;
+                }
+                else{
+                    var day=d2-d1;
+                }
+                if(m1>m2){
+                    var month=12-m1+m2;
+                    y1=y1+1;
+                }
+                else{
+                    var month=m2-m1;
+                }
+                var year=y2-y1;
+                document.getElementById("ID2").innerHTML="Your Age is<br>"+year+" Years "+month+" Months "+day+" Days";
+                }
+                else{
+                document.getElementById("ID2").innerHTML="Enter correct Date of Birth";
+                }
+            }
+        </script>
+    </head>
+    <body  style="text-align: center; font-size: 40px;">
+        <h1>Age Caculator</h1>
+        <h4>Enter Your DOB</h4>
+        <input type="date" id="datetime">
+        <br>
+        <button type="button" onclick="agecalc()">Calculate age</button>
+        <p id="ID1"></p>
+        <p id="ID2"></p>
+    </body>
+</html>
